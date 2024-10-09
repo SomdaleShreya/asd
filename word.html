@@ -1,0 +1,68 @@
+expt-6: write javascript to number of characters ,words and lines in the text entered using alert message
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+    #result {
+      margin-top: 10px;
+    }
+  </style>
+  <title>Text Analyzer</title>
+</head>
+<body>
+  <h1>Text Analyzer</h1>
+  <label for="textInput">Enter Text:</label>
+  <textarea id="textInput" placeholder="Type your text here..."></textarea>
+  <button onclick="analyzeText()">Analyze</button>
+  <div id="result">
+    <h2>Analysis Result:</h2>
+    <p>Character Count: <span id="charCount">0</span></p>
+    <p>Word Count: <span id="wordCount">0</span></p>
+    <p>Line Count: <span id="lineCount">0</span></p>
+    <p>Space Count: <span id="spaceCount">0</span></p>
+  </div>
+  <script>
+  function analyzeText() {
+      const textInput = document.getElementById('textInput').value;
+      let charCount = 0;
+      let wordCount = 0;
+      let lineCount = 0;
+      let spaceCount = 0;
+      for (let i = 0; i < textInput.length; i++) {
+        const currentChar = textInput[i];
+        // Count characters
+        charCount++;
+       // Count spaces
+        if (currentChar === ' ') {
+          spaceCount++;}
+        // Count words
+        if (currentChar === ' ' || currentChar === '\n' || currentChar === '\t') {
+          if (i > 0 && textInput[i - 1] !== ' ' && textInput[i - 1] !== '\n' && textInput[i - 1] !== '\t') {
+            wordCount++;}
+        }
+        // Count lines
+        if (currentChar === '\n') {
+          lineCount++;}
+      }
+      // Adjust word count for the last word
+      if (textInput.length > 0 && textInput[textInput.length - 1] !== ' ' && textInput[textInput.length - 1] !== '\n' && textInput[textInput.length - 1] !== '\t') {
+        wordCount++;}
+      // Display the results
+      document.getElementById('charCount').innerText = charCount;
+      document.getElementById('wordCount').innerText = wordCount;
+      document.getElementById('lineCount').innerText = lineCount;
+      document.getElementById('spaceCount').innerText = spaceCount;
+    }
+  </script>
+</body>
+</html>

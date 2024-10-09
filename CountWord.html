@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var str="Winner never quits and Quitter never wins";
+        var len=str.length;
+        var spaces=0;
+        var words=0;
+
+        var i=0;
+        while(i<len){
+            if (str[i]==" ")
+            {
+                spaces++;
+            }
+            i++;
+        }
+        if(spaces>=1){
+            words=spaces+1;
+        }
+        document.write("Give String is:"+str+"<br>");
+        document.write("Number of words in a String:"+words+"<br>");
+    </script>
+</body>
+</html>
